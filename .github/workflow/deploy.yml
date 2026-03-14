@@ -14,8 +14,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
+      - name: Checkout
         uses: actions/checkout@v4
+
+      # Optional but recommended: ensures the right Node version
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm' # or 'pnpm' / 'yarn'
+
       - name: Install, build, and upload your site
         uses: withastro/action@v3
 
